@@ -1,0 +1,43 @@
+buildscript {
+    ext.springBootVersion = '2.3.7.RELEASE'
+    ext.springDependencyManagementVersion = '1.0.10.RELEASE'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id 'org.springframework.boot' version '2.3.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+group 'com.nalssine.calc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
